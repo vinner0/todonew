@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f0e8">
+    <title>Daymark | Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Daymark home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>daymark</span>
+        </a>
+        <span class="date-label" id="date-label"></span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">A little clarity, every day</p>
+        <h1 id="page-title">Make room for<br><em>what matters.</em></h1>
+        <p class="intro-copy">Capture the loose ends, then give your attention back to the work in front of you.</p>
+      </section>
+
+      <section class="todo-panel" aria-label="Todo list">
+        <form class="todo-form" id="todo-form">
+          <label class="sr-only" for="todo-input">Add a new task</label>
+          <input id="todo-input" type="text" maxlength="120" placeholder="What needs doing?" autocomplete="off">
+          <button type="submit" class="add-button" aria-label="Add task">+</button>
+        </form>
+
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filter tasks">
+            <button class="filter-button is-active" type="button" data-filter="all">All</button>
+            <button class="filter-button" type="button" data-filter="active">Open</button>
+            <button class="filter-button" type="button" data-filter="completed">Done</button>
+          </div>
+          <button class="clear-button" id="clear-completed" type="button">Clear done</button>
+        </div>
+
+        <ul class="todo-list" id="todo-list" aria-live="polite"></ul>
+        <div class="empty-state" id="empty-state">
+          <span class="empty-icon" aria-hidden="true">&#10003;</span>
+          <p id="empty-message">Your list is clear.</p>
+        </div>
+
+        <footer class="list-footer">
+          <span id="task-count">0 open</span>
+          <span class="saved-note"><span class="status-dot"></span> Saved in this browser</span>
+        </footer>
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
